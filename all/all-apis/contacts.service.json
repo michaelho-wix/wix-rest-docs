@@ -149,7 +149,7 @@
         "rpcRequestName": "BulkDeleteContactsRequest",
         "rpcResponseName": "BulkDeleteContactsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Bulk Label And Unlabel Contacts",
@@ -234,7 +234,7 @@
         "rpcRequestName": "BulkLabelAndUnlabelContactsRequest",
         "rpcResponseName": "BulkLabelAndUnlabelContactsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Bulk Update Contacts",
@@ -314,7 +314,7 @@
         "rpcRequestName": "BulkUpdateContactsRequest",
         "rpcResponseName": "BulkUpdateContactsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Create Contact",
@@ -380,7 +380,7 @@
         "rpcRequestName": "CreateContactRequest",
         "rpcResponseName": "CreateContactResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Delete Contact",
@@ -437,7 +437,7 @@
         "rpcRequestName": "DeleteContactRequest",
         "rpcResponseName": "DeleteContactResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Get Bulk Job",
@@ -517,7 +517,7 @@
         "rpcRequestName": "GetBulkJobRequest",
         "rpcResponseName": "GetBulkJobResponse"
       },
-      "customLabels": [{"id": "maturity-alpha"}]
+      "customLabels": []
     },
         {
       "name": "Get Contact",
@@ -686,7 +686,7 @@
         "rpcRequestName": "GetContactRequest",
         "rpcResponseName": "GetContactResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Label Contact",
@@ -758,7 +758,7 @@
         "rpcRequestName": "LabelContactRequest",
         "rpcResponseName": "LabelContactResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "List Bulk Jobs",
@@ -808,7 +808,7 @@
         "rpcRequestName": "ListBulkJobsRequest",
         "rpcResponseName": "ListBulkJobsResponse"
       },
-      "customLabels": [{"id": "maturity-alpha"}]
+      "customLabels": []
     },
         {
       "name": "List Contacts",
@@ -952,7 +952,7 @@
           "in": "QUERY",
           "name": "paging.limit",
           "type": "integer",
-          "doc": " Number of items to return.\n",
+          "doc": " Number of items to return (default = 50, max = 1000).\n",
           "required": false
         },
                 {
@@ -1035,7 +1035,7 @@
         "rpcRequestName": "ListContactsRequest",
         "rpcResponseName": "ListContactsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "List Facets",
@@ -1068,7 +1068,7 @@
           "in": "QUERY",
           "name": "paging.limit",
           "type": "integer",
-          "doc": " Number of items to return.\n",
+          "doc": " Number of items to return (default = 50, max = 1000).\n",
           "required": false
         },
                 {
@@ -1124,7 +1124,7 @@
         "rpcRequestName": "ListFacetsRequest",
         "rpcResponseName": "ListFacetsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Query Contacts",
@@ -1213,7 +1213,7 @@
         "rpcRequestName": "QueryContactsRequest",
         "rpcResponseName": "QueryContactsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Query Facets",
@@ -1293,7 +1293,7 @@
         "rpcRequestName": "QueryFacetsRequest",
         "rpcResponseName": "QueryFacetsResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Unlabel Contact",
@@ -1365,7 +1365,7 @@
         "rpcRequestName": "UnlabelContactRequest",
         "rpcResponseName": "UnlabelContactResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     },
         {
       "name": "Update Contact",
@@ -1425,6 +1425,7 @@
           "type": "All APIs.Contacts._google_protobuf_FieldMask",
           "doc": "\nSet of fields to update.\nFields that aren't included in `fieldMask.paths` are ignored.\nSee\n[Field Masks in Update Requests](https://dev.wix.com/api/rest/contacts/contacts/field-masks-in-update-requests)\nfor details on working with field masks.\n\n> **Deprecation Notice:**\n> This parameter will be removed on March 31, 2022.\n> If your app uses this parameter, update your code as soon as possible.\n",
           "required": false,
+          "fieldMask": "RPC",
           "deprecated": true
         }
       ],
@@ -1457,7 +1458,7 @@
         "rpcRequestName": "UpdateContactRequest",
         "rpcResponseName": "UpdateContactResponse"
       },
-      "customLabels": [{"id": "maturity-beta"}]
+      "customLabels": []
     }
   ],
   "events":   [
@@ -1575,7 +1576,7 @@
           "description": "Request permission to read the site's contact info."
         }
       ],
-      "customLabels": [{"id": "maturity-beta"}],
+      "customLabels": [],
       "eventType": "wix.contacts.v4.contact_deleted",
       "extra": {"isDomainEvent": true}
     },
@@ -1606,7 +1607,7 @@
           "description": "Request permission to read the site's contact info."
         }
       ],
-      "customLabels": [{"id": "maturity-beta"}],
+      "customLabels": [],
       "eventType": "wix.contacts.v4.contact_updated",
       "extra": {"isDomainEvent": true}
     },
@@ -1637,7 +1638,7 @@
           "description": "Request permission to read the site's contact info."
         }
       ],
-      "customLabels": [{"id": "maturity-beta"}],
+      "customLabels": [],
       "eventType": "wix.contacts.v4.contact_created",
       "extra": {"isDomainEvent": true}
     }
@@ -1781,18 +1782,11 @@
         "links": [],
         "examples": []
       },
-      "members":       [
-                {
-          "name": "currentEntity",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_Contact",
-          "doc": "Event body"
-        },
-                {
-          "name": "previousEntity",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_Contact",
-          "doc": "Previous event body, (when relevant)."
-        }
-      ],
+      "members": [      {
+        "name": "currentEntity",
+        "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_Contact",
+        "doc": "Event body"
+      }],
       "enum": null,
       "extra": {},
       "labels": []
@@ -3463,7 +3457,7 @@
                 {
           "name": "limit",
           "type": "integer",
-          "doc": " Number of items to return.\n"
+          "doc": " Number of items to return (default = 50, max = 1000).\n"
         },
                 {
           "name": "offset",
@@ -4253,6 +4247,7 @@
           "name": "fieldMask",
           "type": "All APIs.Contacts._google_protobuf_FieldMask",
           "doc": "\nSet of fields to update.\nFields that aren't included in `fieldMask.paths` are ignored.\nSee\n[Field Masks in Update Requests](https://dev.wix.com/api/rest/contacts/contacts/field-masks-in-update-requests)\nfor details on working with field masks.\n\n> **Deprecation Notice:**\n> This parameter will be removed on March 31, 2022.\n> If your app uses this parameter, update your code as soon as possible.\n",
+          "fieldMask": "RPC",
           "deprecated": true
         }
       ],
@@ -5716,7 +5711,7 @@
       "displayName": "Job Status Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN_STATUS <\/code><\/li><li><code> NEW <\/code><\/li><li><code> LOADING <\/code><\/li><li><code> RUNNING <\/code><\/li><li><code> COMPLETED <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> UNKNOWN_STATUS <\/code><\/li><li><code> NEW <\/code><\/li><li><code> LOADING <\/code><\/li><li><code> RUNNING <\/code><\/li><li><code> COMPLETED <\/code><\/li><li><code> INDEXING <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -5726,7 +5721,8 @@
         "NEW",
         "LOADING",
         "RUNNING",
-        "COMPLETED"
+        "COMPLETED",
+        "INDEXING"
       ],
       "extra": {},
       "labels": []
