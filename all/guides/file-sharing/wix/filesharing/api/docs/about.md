@@ -6,7 +6,7 @@ and let site members contribute their files to the library, which can be used by
 There are many features included, such as the ability to do one action (Rename, Move, Delete) on multiple files, 
 let members favorite items and an option to control who can do what with permissions.
 
-![File Share List View](https://s3.amazonaws.com/wixplorer-readme-images/file-sharing%2Ffile-share.png) 
+![File Share List View](file-share.png) 
 
 #### What can users do with it?
 
