@@ -93,11 +93,11 @@ The main workflow for the users and especially for their buyers is the following
 
     1. Accordeon Version - where the details of the payment method are display below the selection.
 
-        ![](https://s3.amazonaws.com/wixplorer-readme-images/cashier-pay%2FCashierPaymentsWidget.png)
+        ![](./images/CashierPaymentsWidget.png)
 
     2. Separated Version - where the details of the payment method are display below the payment method selection area.
     
-        ![](https://s3.amazonaws.com/wixplorer-readme-images/cashier-pay%2FCashierPaymentsComponent.png)
+        ![](./images/CashierPaymentsComponent.png)
     
 ### Client side wrapper SDK
 
@@ -115,7 +115,7 @@ The Cashier Pay service can be integrated in several way
 
 Integration documentation can be found in more details [Cashier Payments Widget™](https://bo.wix.com/cashier-docs#/?id=cashier-docs) documentation.
 
-![](https://s3.amazonaws.com/wixplorer-readme-images/cashier-pay%2FTPACashierIntegrationSimplified.png)
+![](./images/TPACashierIntegrationSimplified.png)
 
 ### Standard Integration
 
