@@ -12,10 +12,10 @@ My Test readme dummy change!
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 
-![ScreenShot](https://s3.amazonaws.com/wixplorer-readme-images/wix-docs-bazel%2Fintellij.png)
+![ScreenShot](../../readme/intellij.png)
 
 
-![Dimetrodon](https://s3.amazonaws.com/wixplorer-readme-images/wix-docs-bazel%2Fdimetrodon.jpg)
+![Dimetrodon](../../readme/dimetrodon.jpg)
 
 
 <img src="../../readme/rial.png" style="vertical-align:bottom;"/>
