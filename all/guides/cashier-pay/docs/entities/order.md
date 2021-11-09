@@ -17,11 +17,11 @@ Order can have one of the following statues:
 
 ### Order Status Flow (one-time)
 
-![](https://s3.amazonaws.com/wixplorer-readme-images/cashier-pay%2FOrdersnapshotStatusFlowchartOneTime.png)
+![](../images/OrdersnapshotStatusFlowchartOneTime.png)
 
 ### Order Status Flow (recurring)
 
-![](https://s3.amazonaws.com/wixplorer-readme-images/cashier-pay%2FOrdersnapshotStatusFlowchartRecurring.png)
+![](../images/OrdersnapshotStatusFlowchartRecurring.png)
 
 ## Order event hooks
 
