@@ -37,7 +37,6 @@ That is done by adding it to FryingPan config of contacts-labels-app. In order t
 
 ### Specs 
 To be able to easily test your app defined labels you can override the following specs: 
-* Turn on [ContactsEnableAppDefinedLabels][ContactsEnableAppDefinedLabels] - for the app defined labels to be available
 * Turn on [ContactsAppDefinedLabelsTestMode][ContactsAppDefinedLabelsTestMode] - in order to return non whitelisted and not installed app defined labels
 
 ### Translation
@@ -53,5 +52,4 @@ You can translate system label display name by adding a new row to the file with
 
 [dev-center]: https://dev.wix.com
 [messages_en]: https://github.com/wix-private/crm/blob/master/contacts/common/src/main/resources/contacts-app-translations/messages_en.json
-[ContactsEnableAppDefinedLabels]: https://bo.wix.com/petri/experiments/todo
-[ContactsAppDefinedLabelsTestMode]: https://bo.wix.com/petri/experiments/todo
+[ContactsAppDefinedLabelsTestMode]: https://bo.wix.com/petri/experiments/272685
