@@ -3,11 +3,11 @@ The Product Catalog stores and manages the templates of all products sold by Wix
 It is a key component in the Dynamic Offering subscriptions management platform.
 It does not deal with display related concerns and/or translations (to be handled by "Display Layer", WIP).
 
-![Dynamic Offering diagram](dynamic-offering.png)
+![Dynamic Offering diagram](https://s3.amazonaws.com/wixplorer-readme-images/premium-product-catalog%2Fdynamic-offering.png)
 
 The catalog has a 2-level hierarchy of products: each product belongs to a "product family", which in turn belongs to a "product type":
 
-![Product catalog diagram](product-catalog-color.png)
+![Product catalog diagram](https://s3.amazonaws.com/wixplorer-readme-images/premium-product-catalog%2Fproduct-catalog-color.png)
 
 ### Main entities:
 
