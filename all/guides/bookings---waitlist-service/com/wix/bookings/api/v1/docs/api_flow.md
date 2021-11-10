@@ -19,4 +19,4 @@ Upon reaching the end of the list, with no one accepting the invitation to join 
 ## Use Cases
 
 ### Book a visitor to the waitlist and then to the session
-![image](./images/BookToWaitlist.png)
+![image](https://s3.amazonaws.com/wixplorer-readme-images/bookings---waitlist-service%2FBookToWaitlist.png)
