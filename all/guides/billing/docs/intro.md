@@ -9,7 +9,7 @@ Billing notifications integration is done via SBS (Wix Billing System).
 Please contact the team at #billing-discussions
 
 
-![](./images/BillingGatewayDiagram.png)
+![](https://s3.amazonaws.com/wixplorer-readme-images/billing%2FBillingGatewayDiagram.png)
 
 
 ## Onboarding
