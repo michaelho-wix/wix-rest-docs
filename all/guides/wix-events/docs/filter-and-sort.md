@@ -90,24 +90,21 @@ Refer to the following tables to check which fields support sorting.
 | saleStatus    | Ticket sale status      |         | Allowed |
 | saleStartDate | Ticket sale start date  | Allowed |         |
 | saleEndDate   | Ticket sale end date    | Allowed |         |
-| state         | Ticket state flags      |         |         |
-
 
 ## Query Ticket Definitions
 [//]: # (https://bo.wix.com/wix-docs/rest/events/wix-events/filter-and-sort#events_wix-events_filter-and-sort_query-ticket-definitions)
 
-| Field              | Description              | Query Filter Operators                                            | Sorting |  Facets |
-|--------------------|--------------------------|-------------------------------------------------------------------|---------|---------|
-| created            | Creation date            |                                                                   | Allowed |         |
-| price              |                          |                                                                   | Allowed |         |
-| orderIndex         |                          |                                                                   | Allowed |         |
-| ticketDefinitionId |                          | $eq,$ne,$hasSome,$in                                              |         |         |
-| eventId            |                          | $eq,$ne,$hasSome,$in                                              |         |         |
-| name               |                          | $eq,$ne,$lt,$lte,$gt,$gte,$hasSome,$in,$contains,$urlized         | Allowed |         |
-| saleStatus         | Ticket sale status       | $eq,$ne,$hasSome,$in                                              |         | Allowed |
-| saleStartDate      | Ticket sale start date   | $lt,$gt                                                           | Allowed |         |
-| saleEndDate        | Ticket sale end date     | $lt,$gt                                                           | Allowed |         |
-| hidden             | Whether ticket is hidden | $eq,$ne,$hasSome,$in                                              |         | Allowed |
+| Field              | Description             | Query Filter Operators                                            | Sorting |  Facets |
+|--------------------|-------------------------|-------------------------------------------------------------------|---------|---------|
+| created            | Creation date           |                                                                   | Allowed |         |
+| price              |                         |                                                                   | Allowed |         |
+| orderIndex         |                         |                                                                   | Allowed |         |
+| ticketDefinitionId |                         | $eq,$ne,$hasSome,$in                                              |         |         |
+| eventId            |                         | $eq,$ne,$hasSome,$in                                              |         |         |
+| name               |                         | $eq,$ne,$lt,$lte,$gt,$gte,$hasSome,$in,$contains,$urlized         | Allowed |         |
+| saleStatus         | Ticket sale status      | $eq,$ne,$hasSome,$in                                              |         | Allowed |
+| saleStartDate      | Ticket sale start date  | $lt,$gt                                                           | Allowed |         |
+| saleEndDate        | Ticket sale end date    | $lt,$gt                                                           | Allowed |         |
 
 ## List Orders
 [//]: # (https://bo.wix.com/wix-docs/rest/events/wix-events/filter-and-sort#events_wix-events_filter-and-sort_list-orders)
