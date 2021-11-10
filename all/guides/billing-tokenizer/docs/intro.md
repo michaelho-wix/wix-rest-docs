@@ -13,7 +13,7 @@ The Billing Tokenizer uses a PCI Compliant component for tokenization of the sen
 The generated token is linked to a specific user, and can not be used by other customers.
 
 
-![](./images/BillingTokenizerDiagram.png)
+![](https://s3.amazonaws.com/wixplorer-readme-images/billing-tokenizer%2FBillingTokenizerDiagram.png)
 
 
 ## Onboarding
