@@ -8,7 +8,7 @@ SortOrder: 1
 4. **Acquirer**: The bank tasked with acquiring payment on the merchant's behalf.
 5. **Card Association**: The card brands (Visa, Mastercard, and others) oversee the process.
 
-![Dispute lifecycle](dispute_lifecycle.png "Dispute lifecycle")
+![Dispute lifecycle](https://s3.amazonaws.com/wixplorer-readme-images/wix-payments-transactions%2Fdispute_lifecycle.png "Dispute lifecycle")
 
 ### RFI
 A dispute can be created upon receiving an RFI (Request For Information), which is a preliminary step before a chargeback (no movement of funds).
@@ -65,7 +65,7 @@ curl --location --request POST 'https://wixmp-90ef227251107558e3a6a71f.appspot.c
 --form '=@"/example.pdf"'
 ```
 
-![Evidence Upload](evidence_upload.png "Evidence Upload")
+![Evidence Upload](https://s3.amazonaws.com/wixplorer-readme-images/wix-payments-transactions%2Fevidence_upload.png "Evidence Upload")
 
 
 4. Retrieve the `payload.id` from the JSON response.  
