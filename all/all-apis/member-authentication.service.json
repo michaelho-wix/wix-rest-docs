@@ -71,7 +71,7 @@
     },
     "locations": [],
     "docs":     {
-      "summary": "\nSends a site member an email with a link to set their password.\n\n<!--ONLY:VELO\nThe `sendSetPasswordEmail()` function returns a Promise that resolves\nwhen the set password link is emailed to the member.\n<!--END:ONLY:VELO-->\n\nThe set password link is valid for 3 hours,\nand it can be used only once.\nIf the link expires, the original password remains.\n \n",
+      "summary": "\nSends a site member an email with a link to set their password.\n\nThe set password link is valid for 3 hours,\nand it can be used only once.\nIf the link expires, the original password remains.\n \n",
       "description": [],
       "request": "POST",
       "url": "https://www.wixapis.com/members/v1/auth/members/send-set-password-email",
@@ -581,7 +581,7 @@
                 {
           "name": "profilePrivacyStatus",
           "type": "All APIs.Member Authentication._wix_members_api_v1_SiteMemberPrivacyStatus",
-          "doc": "\nSets the privacy status of a new member upon registration.\n\n<!--ONLY:REST-->\n- `PUBLIC`: Member is visible to everyone.\n- `PRIVATE`: Member is hidden from site visitors and other site members. Member is returned only to site contributors and apps with the appropriate permissions.\n- `UNKNOWN`: Insufficient permissions to get the status.\n<!--END:ONLY:REST-->\n\n<!--ONLY:VELO\nOne of:\n\n- `\"PUBLIC\"`: Member is visible to everyone.\n- `\"PRIVATE\"`: Member is hidden from site visitors and other site members. Member is returned only to site contributors and apps with the appropriate permissions.\n- `\"UNKNOWN\"`: Insufficient permissions to get the status.\n<!--END:ONLY:VELO-->\n"
+          "doc": "\nSets the privacy status of a new member upon registration.\n\n- `PUBLIC`: Member is visible to everyone.\n- `PRIVATE`: Member is hidden from site visitors and other site members. Member is returned only to site contributors and apps with the appropriate permissions.\n- `UNKNOWN`: Insufficient permissions to get the status.\n"
         },
                 {
           "name": "isOfflineRegistration",
