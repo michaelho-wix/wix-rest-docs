@@ -121,6 +121,7 @@ SortOrder: 3
 | `5005` | `Pending_fraudulent_transaction` |
 | `5006` | `Risk_bank_decline` |
 | `5007` | `Pick_up_card` |
+| `5009` | `Pending_general` |
 | `6000` | `General_error` |
 | `6404` | `No_matching_rules` |
 | `6500` | `Error_mapping_unavailable` |
