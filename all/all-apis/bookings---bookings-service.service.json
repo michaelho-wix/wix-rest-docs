@@ -16,6 +16,11 @@
       "entity": null
     },
         {
+      "name": "BookingsV2",
+      "entity": "_com_wix_bookings_api_v2_Booking",
+      "src": "https://github.com/wix-private/scheduler/tree/master/bookings-backend/bookings/bookings-api/com/wix/bookings/api/v2/entities/booking.proto"
+    },
+        {
       "name": "Bookings",
       "entity": "_com_wix_bookings_api_v1_Booking",
       "src": "https://github.com/wix-private/scheduler/tree/master/bookings-backend/bookings/bookings-api/com/wix/bookings/api/v1/entities/booking.proto"
@@ -122,7 +127,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Book a service.  \n Booking a service can be done by either of two methods:\n 1. The booking is made by a customer.  \n 2. The booking is made by the business on behalf of a customer.  \n  \n<!--ONLY:VELO\n When the booking is done by the customer, the following takes place:  \n - Validation of the booking details according to the bookings policy and the service form mandatory fields.\n - Payment rules are applied. It can be creating a new order in Wix Payments, or redeeming the given paid plan.\n   When online payment is required, the response contains the details which the user can use to complete the payment using Wix Payment Service. \n - When booking an approval required service, The booking is not charged until it is confirmed by the business.  \n   - BySessionId: The participant added to session is marked as `\"PENDING\"` until the booking is confirmed by the business.  \n   - Slot: A new session is created with affected availability based on the configuration defined in the service policy.\n - When booking a service with Business Locations, if a business location is provided its ID will be validated to exist in the schedule's business locations.\n<!--END:ONLY:VELO-->\n\n<!--ONLY:REST-->\n When the booking is done by the customer, the following takes place:  \n - Validation of the booking details according to the bookings policy and the service form mandatory fields.\n - Payment rules are applied.\n - When booking an approval required service, The booking is not charged until it is confirmed by the business.  \n   - BySessionId: The participant added to session is marked as `\"PENDING\"` until the booking is confirmed by the business.  \n   - Slot: A new session is created with affected availability based on the configuration defined in the service policy.\n   - When booking a service with Business Locations, if a business location is provided its Id will be validated to exist in the schedule's business locations.\n\n > **Note:**  \n > The `businessLocation.businessSchedule` object in the `bookedEntity.location` object is not supported.\n    \n > **Permissions**   \n > This endpoint requires the Read Bookings - Public data or the Manage Bookings permission scope.  \n > With the Read Bookings - Public data permission scope, a customer booking flow is applied. \n > With the Manage Bookings permission scope, a business 'book on behalf' flow is applied. \n<!--END:ONLY:REST-->\n \n",
+        "summary": " Book a service.  \n Booking a service can be done by either of two methods:\n 1. The booking is made by a customer.  \n 2. The booking is made by the business on behalf of a customer.  \n  \n<!--ONLY:VELO\n When the booking is done by the customer, the following takes place:  \n - Validation of the booking details according to the bookings policy and the service form mandatory fields.\n - Payment rules are applied. It can be creating a new order in Wix Payments, or redeeming the given paid plan.\n   When online payment is required, the response contains the details which the user can use to complete the payment using Wix Payment Service. \n - When booking an approval required service, The booking is not charged until it is confirmed by the business.  \n   - BySessionId: The participant added to session is marked as `\"PENDING\"` until the booking is confirmed by the business.  \n   - Slot: A new session is created with affected availability based on the configuration defined in the service policy.\n - When booking a service with Business Locations, if a business location is provided its ID will be validated to exist in the schedule's business locations.\n - When booking a service with location set to client's place, the default location is the contacts address as supplied on the form, unless the owner supplied custom address on the session location.\n<!--END:ONLY:VELO-->\n\n<!--ONLY:REST-->\n When the booking is done by the customer, the following takes place:  \n - Validation of the booking details according to the bookings policy and the service form mandatory fields.\n - Payment rules are applied.\n - When booking an approval required service, The booking is not charged until it is confirmed by the business.  \n   - BySessionId: The participant added to session is marked as `\"PENDING\"` until the booking is confirmed by the business.  \n   - Slot: A new session is created with affected availability based on the configuration defined in the service policy.\n   - When booking a service with Business Locations, if a business location is provided its Id will be validated to exist in the schedule's business locations.\n - When booking a service with location set to client's place, the default location is the contacts address as supplied on the form, unless the owner supplied custom address on the session location.\n\n > **Note:**  \n > The `businessLocation.businessSchedule` object in the `bookedEntity.location` object is not supported.\n    \n > **Permissions**   \n > This endpoint requires the Read Bookings - Public data or the Manage Bookings permission scope.  \n > With the Read Bookings - Public data permission scope, a customer booking flow is applied. \n > With the Manage Bookings permission scope, a business 'book on behalf' flow is applied. \n<!--END:ONLY:REST-->\n \n",
         "description": [],
         "request": "POST",
         "url": "https://www.wixapis.com/bookings/v1/bookings/book",
@@ -2166,7 +2171,7 @@
                 {
           "name": "customAddress",
           "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_upstream_wix_common_Address",
-          "doc": "Custom address, used when locationType is `\"OWNER_CUSTOM\"`.\n"
+          "doc": "Custom address, used when locationType is `\"OWNER_CUSTOM\"`. Might be used when locationType is `\"CUSTOM\"` in case the owner sets a custom address for the session which is different from the default.\n"
         },
                 {
           "name": "businessLocation",
@@ -3638,6 +3643,24 @@
       "labels": []
     },
         {
+      "name": "_com_wix_bookings_schedules_api_v1_ExternalCalendarInfo",
+      "displayName": "External Calendar Info Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "calendarType",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_externalcalendar_spi_v1_CalendarTypeEnum_CalendarType",
+        "doc": " The external calendar type (e.g. Google Calendar, iCal, etc).\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wix_bookings_schedules_api_v1_ExternalCalendarOverrides",
       "displayName": "External Calendar Overrides Object",
       "locations": [],
@@ -5091,6 +5114,1436 @@
       "labels": []
     },
         {
+      "name": "_com_wix_bookings_api_v2_CustomFormField",
+      "displayName": "Custom Form Field Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "ID of the form field as defined in the form.\n"
+        },
+                {
+          "name": "value",
+          "type": "string",
+          "doc": "Value that was submitted for this field.\n"
+        },
+                {
+          "name": "label",
+          "type": "string",
+          "doc": "Form field's label at the time of submission.\n",
+          "readOnly": true
+        },
+                {
+          "name": "valueType",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_services_api_v1_ValueTypeConsts_ValueType",
+          "doc": "<!--ONLY:VELO\nOne of:\n - `\"SHORT_TEXT\"`\n - `\"LONG_TEXT\"`\n - `\"CHECK_BOX\"`\n<!--END:ONLY:VELO-->\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_ContactDetails",
+      "displayName": "Contact Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "contactId",
+          "type": "string",
+          "doc": " Contact's ID.\n"
+        },
+                {
+          "name": "firstName",
+          "type": "string",
+          "doc": " Contact's first name. When populated from a standard booking form, this property corresponds to the **Name** field.\n"
+        },
+                {
+          "name": "lastName",
+          "type": "string",
+          "doc": " Contact's last name.\n"
+        },
+                {
+          "name": "email",
+          "type": "string",
+          "doc": " Contact's email, used to create a new contact or get existing one from the [Contacts API](https://dev.wix.com/api/rest/contacts/contacts). Used to validate coupon usage limitations per contact. If not passed, the coupon usage limitation will not be enforced. (Coupon usage limitation validation is not supported yet).\n"
+        },
+                {
+          "name": "phone",
+          "type": "string",
+          "doc": " Contact's phone number.\n"
+        },
+                {
+          "name": "fullAddress",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_upstream_wix_common_Address",
+          "doc": " Contact's full address.\n"
+        },
+                {
+          "name": "timeZone",
+          "type": "string",
+          "doc": " Contact's time zone.\n"
+        },
+                {
+          "name": "countryCode",
+          "type": "string",
+          "doc": " Contact's country in [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookingSource",
+      "displayName": "Booking Source Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "platform",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookingSource_Platform",
+          "doc": " Platform from which a booking was created\n<!--ONLY:VELO\n One of:\n - `\"WEB\"` Desktop browser.\n - `\"MOBILE_APP\"` Mobile application.\n<!--END:ONLY:VELO-->\n"
+        },
+                {
+          "name": "actor",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookingSource_Actor",
+          "doc": " Actor that created this booking.\n<!--ONLY:VELO\nOne of:\n - `\"BUSINESS\"`\n - `\"CUSTOMER\"`\n<!--END:ONLY:VELO-->\n"
+        },
+                {
+          "name": "appDefId",
+          "type": "string",
+          "doc": " Wix site ID of the application that created this booking.\n",
+          "readOnly": true
+        },
+                {
+          "name": "appName",
+          "type": "string",
+          "doc": " Name of the application that created this booking, as saved in Wix-dev-center at the time of booking.\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_SetAttendanceRequest",
+      "displayName": "Set Attendance Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "attendance",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Attendance",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_SetAttendanceResponse",
+      "displayName": "Set Attendance Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "attendance",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Attendance",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_Attendance",
+      "displayName": "Attendance Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Booking ID\n"
+        },
+                {
+          "name": "bookingId",
+          "type": "string",
+          "doc": " Booking ID\n"
+        },
+                {
+          "name": "sessionId",
+          "type": "string",
+          "doc": " Session ID\n"
+        },
+                {
+          "name": "attendanceStatus",
+          "type": "boolean",
+          "doc": "Whether the booked contact attended the session.\n"
+        },
+                {
+          "name": "numberOfAttendees",
+          "type": "integer",
+          "doc": "The number of attendees that attended the session. This can be greater than 1 when the booking is made for a group of people.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_QueryAttendanceRequest",
+      "displayName": "Query Attendance Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "bookingId",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": ""
+        },
+                {
+          "name": "sessionId",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_QueryAttendanceResponse",
+      "displayName": "Query Attendance Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "attendance",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Attendance"]
+        },
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_UpdateAttendanceRequest",
+      "displayName": "Update Attendance Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Attendance ID\n"
+        },
+                {
+          "name": "attendance",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Attendance",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_UpdateAttendanceResponse",
+      "displayName": "Update Attendance Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "attendance",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Attendance",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_bookings_availability_Slot",
+      "displayName": "Slot Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "sessionId",
+          "type": "string",
+          "doc": " Identifier for underlying session when session is a single session or generated from a recurring session. Required.\n"
+        },
+                {
+          "name": "serviceId",
+          "type": "string",
+          "doc": " Service identifier. Required.\n"
+        },
+                {
+          "name": "scheduleId",
+          "type": "string",
+          "doc": " Schedule identifier. Required.\n"
+        },
+                {
+          "name": "startDate",
+          "type": "string",
+          "doc": " The start time of this Slot (formatted according to RFC3339). Required.\n"
+        },
+                {
+          "name": "endDate",
+          "type": "string",
+          "doc": " The end time of this Slot (formatted according to RFC3339). Required.\n"
+        },
+                {
+          "name": "timezone",
+          "type": "string",
+          "doc": " The timezone according to which the slot was calculated and should be presented.\n"
+        },
+                {
+          "name": "resource",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_SlotResource",
+          "doc": " The resource required for this Slot. Currently, in Bookings, this is the relevant staff. Required.\n"
+        },
+                {
+          "name": "location",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_Location",
+          "doc": " Geographic location of the Slot.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_bookings_availability_SlotResource",
+      "displayName": "Slot Resource Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Resource's unique ID\n",
+          "readOnly": true
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Read only. Resource's name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_bookings_availability_Location",
+      "displayName": "Location Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Business Location ID. Present if the location is a business location.\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Location name.\n"
+        },
+                {
+          "name": "formattedAddress",
+          "type": "string",
+          "doc": " A string containing the full address of this location.\n"
+        },
+                {
+          "name": "locationType",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_LocationType",
+          "doc": "Location type.\n<!--ONLY:VELO\n One of:\n - `\"OWNER_BUSINESS\"` The business address as set in the site’s general settings.\n - `\"OWNER_CUSTOM\"` The address as set when creating the service.\n - `\"CUSTOM\"` The address set for the individual session.\n<!--END:ONLY:VELO-->\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_Booking",
+      "displayName": "Booking Object",
+      "locations": [],
+      "docs":       {
+        "summary": " The booking domain object\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Booking ID. Read-Only.\n",
+          "readOnly": true
+        },
+                {
+          "name": "bookedEntity",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookedEntity",
+          "doc": " An object describing the entity that was booked. Read-Only.\n"
+        },
+                {
+          "name": "bookedResources",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookedResource"]
+          },
+          "doc": " A list of booked resources. Currently, only 1 resource is supported. The booked resource would generally be the staff-member giving the session.\nTODO - we have data duplication in slot.resource and this field\n"
+        },
+                {
+          "name": "contactDetails",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_ContactDetails",
+          "doc": " Contact details of the customer making the booking.\n"
+        },
+                {
+          "name": "additionalFields",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_CustomFormField"]
+          },
+          "doc": " Additional custom fields submitted with the form.\n"
+        },
+                {
+          "name": "numberOfParticipants",
+          "type": "integer",
+          "doc": " Number of participants\n"
+        },
+                {
+          "name": "status",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking_BookingStatus",
+          "doc": " Booking status. Read-Only.\n One of:\n - `\"CREATED\"` - The booking was created.\n - `\"UPDATED\"` - The booking was updated.\n - `\"PENDING_ECOM_CHECKOUT\"` - The booking is waiting to be checked out by eCommerce platform. This status is required in order prevent changes to the booking when checking out the booking, or to add the booking to a cart. (Carts are not supported yet)\n - `\"CONFIRMED\"` - The booking has been confirmed and synced to bookings calendar.\n    Bookings can be manually confirmed using `setAsConfirmed()`. <TODO: Link>\n    Bookings are automatically confirmed when all of the following requirements are met:\n      - The service is configured as \"Automatically accept all bookings when available\".\n      - The eCommerce `createCheckout()` <TODO: Link> API has been called and the eCommerce order approved event <TODO: callback/event name> has been sent\n      - The eCommerce `createCheckout() was called and the order eCommerce approved event has been sent, but the payment requirements were not met The order payment status is pending.\n - `\"CANCELED\"` - The booking has been canceled and synced to bookings calendar.\n    The booking can be canceled using `cancel` <TODO: link,confirm name> API.\n - `\"PENDING\"` - The booking is in pending status and synced to bookings calendar.\n    Bookings can be manually set as pending using `setAsPending()`<TODO: link>.\n    Bookings can be automatically set as pending  when all of the following requirements are met:\n      - The service is configured as \"Manually approve or decline booking requests\".\n      - The eCommerce `createCheckout()` <TODO: Link> API has been called and the eCommerce order approved event <TODO: callback/event name> has been sent\n     - The eCommerce `createCheckout() was called and the order eCommerce approved event has been sent, but the payment requirements were not met The order payment status is pending.\n - `\"WAITING_LIST\"` - The booking is pending on a waiting list.\n    Bookings are created with this status using `Register to Waitlist` <TODO: link> API.\n - `\"DECLINED\"` - The booking was declined by the owner and synced to bookings calendar.\n    Bookings can be manually declined using decline API and requires manage booking permissions.\n    Bookings can be automatically declined when the following requirements are me:\n    - The order declined event has been sent after calling the eCommerce `createCheckout()` <TODO: Link> API\n    - The order approved event has been sent after calling the eCommerce `createCheckout()` <TODO: Link> API in case the booking is offline service,\n    and the booking will cause double booking.\n",
+          "readOnly": true
+        },
+                {
+          "name": "paymentStatus",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking_PaymentStatus",
+          "doc": " Payment status. Read-Only.\n One of:\n - `\"NOT_PAID\"` The booking has not been paid.\n - `\"PAID\"` The booking is fully paid.\n - `\"PARTIALLY_PAID\"` The booking is partially paid.\n",
+          "readOnly": true
+        },
+                {
+          "name": "selectedPaymentOption",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_SelectedPaymentOption",
+          "doc": ""
+        },
+                {
+          "name": "createdDate",
+          "type": "string",
+          "doc": "Date and time the booking was created. Read-Only.\n",
+          "readOnly": true
+        },
+                {
+          "name": "externalUserId",
+          "type": "string",
+          "doc": " External ID provided by the client app on creation. Read-Only.\n"
+        },
+                {
+          "name": "bookingSource",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookingSource",
+          "doc": " An object describing the platform and application that made the booking. Read-Only. TODO - do we need it? what should be the value for a velo user?\n"
+        },
+                {
+          "name": "onlineConference",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_OnlineConference",
+          "doc": " Online conference information. Read-Only.\n Requires manage bookings permission. Optional.\n In case the service.include_conference_option is true, the link is automatically created and a mail is sent.\n internal.\n Required permission: BOOKINGS.ONLINE_CONFERENCE\n"
+        },
+                {
+          "name": "attendanceInfo",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Attendance",
+          "doc": "Attendance information. Read only. Managed by the attendance service. internal.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookedEntity_Schedule",
+      "displayName": "Schedule Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "scheduleId",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "serviceId",
+          "type": "string",
+          "doc": "ID of the booked service.\n"
+        },
+                {
+          "name": "location",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_Location",
+          "doc": " Read only. Geographic location of the Slot.\n"
+        },
+                {
+          "name": "timezone",
+          "type": "string",
+          "doc": " The timezone according to which the slot was calculated and should be presented.\n"
+        },
+                {
+          "name": "firstSessionStart",
+          "type": "string",
+          "doc": " Read only. Start time of the first session.\nTODO - check if needed\n"
+        },
+                {
+          "name": "lastSessionEnd",
+          "type": "string",
+          "doc": " Read only. End time of the last session.\nTODO - check if needed\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookedEntity",
+      "displayName": "Booked Entity Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "type",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookedEntity_type",
+          "doc": "bookable item\n"
+        },
+                {
+          "name": "title",
+          "type": "string",
+          "doc": " Session title at the time of booking.\n"
+        },
+                {
+          "name": "rate",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_common_api_v1_Rate",
+          "doc": " Price options offered to book this session at the time of booking. //TODO - check if relevant also to book to schedule\n"
+        },
+                {
+          "name": "tags",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Read only. A list of tags for the booking. TODO - can we remove it?\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookedEntity_type",
+      "displayName": "type Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "slot",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_Slot",
+          "doc": " Slot - TOTO change to session\n"
+        },
+                {
+          "name": "schedule",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookedEntity_Schedule",
+          "doc": " The booked schedule - represents dynamic set of sessions. This booking will automatically be assined to\n this' schedule sessions.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_OnlineConference",
+      "displayName": "Online Conference Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "guestUrl",
+          "type": "string",
+          "doc": " Participant url.\n"
+        },
+                {
+          "name": "providerId",
+          "type": "string",
+          "doc": " Online conference provider identifier.\n"
+        },
+                {
+          "name": "password",
+          "type": "string",
+          "doc": " Online conference password.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookedResource",
+      "displayName": "Booked Resource Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Booked resource ID.\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Resource's name at the time of booking.\n"
+        },
+                {
+          "name": "email",
+          "type": "string",
+          "doc": " Resource's email at the time of booking.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_DoubleBookingRequest",
+      "displayName": "Double Booking Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "bookingId",
+        "type": "string",
+        "doc": " The booking ID to check double booking for.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_DoubleBookingResponse",
+      "displayName": "Double Booking Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "doubleBookings",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking"]
+        },
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_LockRequest",
+      "displayName": "Lock Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "sessionId",
+          "type": "string",
+          "doc": " The session ID to lock\n"
+        },
+                {
+          "name": "bookingId",
+          "type": "string",
+          "doc": " Optional. The id of the only booking that can confirmed while this session is locked.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_LockResponse",
+      "displayName": "Lock Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "key",
+        "type": "string",
+        "doc": " The locked session key.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_UnlockRequest",
+      "displayName": "Unlock Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "sessionId",
+          "type": "string",
+          "doc": " The session ID to unlock\n"
+        },
+                {
+          "name": "key",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_UnlockResponse",
+      "displayName": "Unlock Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_CreateBookingRequest",
+      "displayName": "Create Booking Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "booking",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_CreateBookingResponse",
+      "displayName": "Create Booking Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "booking",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_ConfirmRequest",
+      "displayName": "Confirm Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "ID of the booking to be confirmed.\n"
+        },
+                {
+          "name": "participantNotification",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_schedules_api_v1_ParticipantNotification",
+          "doc": " Whether to notify the participants about the booking confirmation, and an optional custom message.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_ConfirmResponse",
+      "displayName": "Confirm Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": "ID of the confirmed booking.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_DeclineRequest",
+      "displayName": "Decline Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "ID of the booking to be declined.\n"
+        },
+                {
+          "name": "participantNotification",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_schedules_api_v1_ParticipantNotification",
+          "doc": " Whether to notify the participants about the declined booking, and an optional custom message.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_DeclineResponse",
+      "displayName": "Decline Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": "ID of the declined booking.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_SetBookingAsPendingRequest",
+      "displayName": "Set Booking As Pending Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": "ID of the booking to be declined.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_SetBookingAsPendingResponse",
+      "displayName": "Set Booking As Pending Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": "ID of the declined booking.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_UpdateBookingRequest",
+      "displayName": "Update Booking Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " ID of the booking to be updated.\n"
+        },
+                {
+          "name": "booking",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_UpdateBookingResponse",
+      "displayName": "Update Booking Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "booking",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_QueryBookingsRequest",
+      "displayName": "Query Bookings Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "query",
+          "type": "All APIs.Bookings - Bookings Service._wix_common_Query",
+          "doc": ""
+        },
+                {
+          "name": "withBookingAllowedActions",
+          "type": "boolean",
+          "doc": " If true will return the allowed actions for each booking calculated using the business booking policy.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_QueryBookingsResponse",
+      "displayName": "Query Bookings Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "bookingsEntries",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_bookings_ListBookingEntry"]
+          },
+          "doc": ""
+        },
+                {
+          "name": "pagingMetadata",
+          "type": "All APIs.Bookings - Bookings Service._wix_common_PagingMetadataV2",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_ListBookingEntry",
+      "displayName": "List Booking Entry Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "booking",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+          "doc": ""
+        },
+                {
+          "name": "allowedActions",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_bookings_AllowedActions",
+          "doc": "Optional. Will return only when requested.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookings_AllowedActions",
+      "displayName": "Allowed Actions Object",
+      "locations": [],
+      "docs":       {
+        "summary": "Possible allowed actions for a Booking\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "cancel",
+          "type": "boolean",
+          "doc": " Is cancel booking allowed\n"
+        },
+                {
+          "name": "reschedule",
+          "type": "boolean",
+          "doc": " Is reschedule booking allowed\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CreateBookingRequest_CustomFormField",
+      "displayName": "Custom Form Field Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "ID of the form field as defined in the form.\n"
+        },
+                {
+          "name": "value",
+          "type": "string",
+          "doc": "Value that was submitted for this field.\n"
+        },
+                {
+          "name": "label",
+          "type": "string",
+          "doc": "Form field's label at the time of submission.\n",
+          "readOnly": true
+        },
+                {
+          "name": "valueType",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_bookingsGateway_ValueTypeConsts_ValueType",
+          "doc": "<!--ONLY:VELO\nOne of:\n - `\"SHORT_TEXT\"`\n - `\"LONG_TEXT\"`\n - `\"CHECK_BOX\"`\n<!--END:ONLY:VELO-->\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CreateBookingRequest_FlowControlSettings",
+      "displayName": "Flow Control Settings Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "ignoreBookingWindow",
+          "type": "boolean",
+          "doc": " when defined as true, skips the service defined booking-window in the booking policy.\n required BOOKINGS.IGNORE_BOOKING_POLICY permission. TODO - check if can be merged with skit_availability_validation\n"
+        },
+                {
+          "name": "skipAvailabilityValidation",
+          "type": "boolean",
+          "doc": " when defined as true, skips availability check and allow to book.\n required BOOKINGS.OVERRIDE_AVAILABILITY permission. TODO - check if can be merged with skit_availability_validation\n"
+        },
+                {
+          "name": "skipBusinessConfirmation",
+          "type": "boolean",
+          "doc": " when defined as true, allow to book instantly a confirmation-required service\n required BOOKINGS.IGNORE_BOOKING_POLICY permission.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CreateBookingRequest",
+      "displayName": "Create Booking Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "bookableItem",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_bookingsGateway_CreateBookingRequest_BookableItem",
+          "doc": " The selected bookable item to book.\n can be a specific slot, or pre-defined schedule.\n"
+        },
+                {
+          "name": "contactDetails",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_ContactDetails",
+          "doc": " Contact details of the customer making the booking.\n"
+        },
+                {
+          "name": "additionalFields",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_bookingsGateway_CreateBookingRequest_CustomFormField"]
+          },
+          "doc": " Additional custom fields submitted with the form.\n"
+        },
+                {
+          "name": "numberOfParticipants",
+          "type": "integer",
+          "doc": " Number of participants\n"
+        },
+                {
+          "name": "selectedPaymentOption",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_SelectedPaymentOption",
+          "doc": ""
+        },
+                {
+          "name": "bookingSource",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_BookingSource",
+          "doc": " Identifies the source (platform, actor and app) that created this booking.\n This property of the booking cannot be changed.\n The app_def_id and app_name will be resolved automatically.\n TODO GAP See if we need this - might be able to get this data from the headers?\n"
+        },
+                {
+          "name": "externalUserId",
+          "type": "string",
+          "doc": " A user identifier of an external application user that initiated the book request.\n Allows an external application to later identify its own bookings and correlate to its own internal users\n"
+        },
+                {
+          "name": "notifyParticipants",
+          "type": "boolean",
+          "doc": "send mail\n"
+        },
+                {
+          "name": "sendSmsReminder",
+          "type": "boolean",
+          "doc": " When value is set to True, an SMS reminder would be sent to the phone number specified in the ContactDetails, 24 hours before the session starts.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CreateBookingRequest_BookableItem",
+      "displayName": "Bookable Item Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "slot",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_Slot",
+          "doc": ""
+        },
+                {
+          "name": "scheduleId",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CreateBookingResponse",
+      "displayName": "Create Booking Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "booking",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CancelBookingRequest_FlowControlSettings",
+      "displayName": "Flow Control Settings Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "ignoreCancellationPolicy",
+        "type": "boolean",
+        "doc": " Whether to ignore the service's cancellation policy.\n<!--ONLY:REST-->\n Requires BOOKINGS.IGNORE_BOOKING_POLICY permission.\n<!--END:ONLY:REST-->\n<!--ONLY:VELO\n Requires \"Manage Wix Bookings App\" and \"Manage Bookings' Calendar\" [roles](https://support.wix.com/en/article/roles-permissions-overview#bookings-admin).\n<!--END:ONLY:VELO-->\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CancelBookingRequest",
+      "displayName": "Cancel Booking Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " The ID of the booking to be canceled.\n"
+        },
+                {
+          "name": "participantNotification",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_schedules_api_v1_ParticipantNotification",
+          "doc": " Whether to notify the participants about the booking cancellation, and an optional custom message.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_CancelBookingResponse",
+      "displayName": "Cancel Booking Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": "The ID of the canceled booking.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_RescheduleRequest_FlowControlSettings",
+      "displayName": "Flow Control Settings Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "ignoreReschedulePolicy",
+        "type": "boolean",
+        "doc": " when defined as true, skips the service defined reschedule policy.\n required BOOKINGS.IGNORE_BOOKING_POLICY permission.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_RescheduleRequest",
+      "displayName": "Reschedule Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "bookingId",
+          "type": "string",
+          "doc": " Id of the booking to be updated.\n"
+        },
+                {
+          "name": "bookableItem",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_bookingsGateway_RescheduleRequest_BookableItem",
+          "doc": " The new bookable item to which the booking was rescheduled\n"
+        },
+                {
+          "name": "participantNotification",
+          "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_schedules_api_v1_ParticipantNotification",
+          "doc": " Whether to notify participants about the change and an optional custom message\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_RescheduleRequest_BookableItem",
+      "displayName": "Bookable Item Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "slot",
+          "type": "All APIs.Bookings - Bookings Service._com_wixpress_bookings_availability_Slot",
+          "doc": ""
+        },
+                {
+          "name": "scheduleId",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_RescheduleResponse",
+      "displayName": "Reschedule Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "booking",
+        "type": "All APIs.Bookings - Bookings Service._com_wix_bookings_api_v2_Booking",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_bookings_services_api_v1_ValueTypeConsts_ValueType",
       "displayName": "Value Type Object",
       "locations": [],
@@ -5432,6 +6885,25 @@
       "labels": []
     },
         {
+      "name": "_com_wix_bookings_externalcalendar_spi_v1_CalendarTypeEnum_CalendarType",
+      "displayName": "Calendar Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNDEFINED <\/code><\/li><li><code> GOOGLE <\/code><\/li><li><code> I_CAL <\/code><\/li><li><code> OUTLOOK <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED",
+        "GOOGLE",
+        "I_CAL",
+        "OUTLOOK"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wix_bookings_schedules_api_v1_SessionType",
       "displayName": "Session Type Object",
       "locations": [],
@@ -5483,6 +6955,157 @@
         "UNDEFINED",
         "CONFIRMED",
         "CANCELLED"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookingSource_Platform",
+      "displayName": "Platform Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNDEFINED_PLATFORM <\/code><\/li><li><code> WEB <\/code><\/li><li><code> MOBILE_APP <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED_PLATFORM",
+        "WEB",
+        "MOBILE_APP"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_BookingSource_Actor",
+      "displayName": "Actor Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNDEFINED_ACTOR <\/code><\/li><li><code> BUSINESS <\/code><\/li><li><code> CUSTOMER <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED_ACTOR",
+        "BUSINESS",
+        "CUSTOMER"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_bookings_availability_LocationType",
+      "displayName": "Location Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNDEFINED <\/code><\/li><li><code> OWNER_BUSINESS <\/code><\/li><li><code> OWNER_CUSTOM <\/code><\/li><li><code> CUSTOM <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED",
+        "OWNER_BUSINESS",
+        "OWNER_CUSTOM",
+        "CUSTOM"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_SelectedPaymentOption",
+      "displayName": "Selected Payment Option Object",
+      "locations": [],
+      "docs":       {
+        "summary": " The selected payment option.\n can be one of the payment options offered by the service or other option in case of manage bookings permission.\n The default value derived from the service configuration.\n \n Possible values are: <li><code> OFFLINE <\/code><\/li><li><code> ONLINE <\/code><\/li><li><code> CUSTOM <\/code><\/li><li><code> WIX_PAID_PLAN <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "OFFLINE",
+        "ONLINE",
+        "CUSTOM",
+        "WIX_PAID_PLAN"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_Booking_BookingStatus",
+      "displayName": "Booking Status Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Booking status.\n \n Possible values are: <li><code> UNDEFINED <\/code><\/li><li><code> CREATED <\/code><\/li><li><code> PENDING_ECOM_CHECKOUT <\/code><\/li><li><code> CONFIRMED <\/code><\/li><li><code> CANCELED <\/code><\/li><li><code> PENDING <\/code><\/li><li><code> DECLINED <\/code><\/li><li><code> UPDATED <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED",
+        "CREATED",
+        "PENDING_ECOM_CHECKOUT",
+        "CONFIRMED",
+        "CANCELED",
+        "PENDING",
+        "DECLINED",
+        "UPDATED"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_Booking_PaymentStatus",
+      "displayName": "Payment Status Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Payment status.\n Can be manually updated using updateBooking api. requires manage booking permission.\n Can be automatically updated when using ecom checkout apis.\n \n Possible values are: <li><code> NOT_PAID <\/code><\/li><li><code> PAID <\/code><\/li><li><code> PARTIALLY_PAID - not supported yet.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "NOT_PAID",
+        "PAID",
+        "PARTIALLY_PAID"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_OnlineConference_ConferenceType",
+      "displayName": "Conference Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNDEFINED <\/code><\/li><li><code> ONLINE_MEETING_PROVIDER - API-generated online meeting.\n <\/code><\/li><li><code> CUSTOM - User-defined meeting.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED",
+        "ONLINE_MEETING_PROVIDER",
+        "CUSTOM"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_api_v2_bookingsGateway_ValueTypeConsts_ValueType",
+      "displayName": "Value Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> SHORT_TEXT -  Short text. This is the default value type.\n <\/code><\/li><li><code> LONG_TEXT -  Long text\n <\/code><\/li><li><code> CHECK_BOX -  a text that represent the check box value: if selected the value is \"true\", otherwise \"false\".\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "SHORT_TEXT",
+        "LONG_TEXT",
+        "CHECK_BOX"
       ],
       "extra": {},
       "labels": []
