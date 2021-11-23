@@ -26,7 +26,7 @@
       "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-blog-platformized-proto//v3/category.proto"
     },
         {
-      "name": "Tag",
+      "name": "Tags",
       "entity": "_com_wixpress_npm_communities_platformized_blog_Tag",
       "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-blog-platformized-proto//tag.proto"
     },
@@ -357,7 +357,7 @@
       "name": "Get Tag",
       "methodName": "GetTag",
       "serviceName": "TagService",
-      "tag": "Tag",
+      "tag": "Tags",
       "permissions": [],
       "events": [],
       "labels": [],
@@ -417,7 +417,7 @@
       "name": "Get Tag By Label",
       "methodName": "GetTagByLabel",
       "serviceName": "TagService",
-      "tag": "Tag",
+      "tag": "Tags",
       "permissions": [],
       "events": [],
       "labels": [],
@@ -484,7 +484,7 @@
       "name": "Get Tag By Slug",
       "methodName": "GetTagBySlug",
       "serviceName": "TagService",
-      "tag": "Tag",
+      "tag": "Tags",
       "permissions": [],
       "events": [],
       "labels": [],
@@ -1021,7 +1021,7 @@
       "name": "Query Tags",
       "methodName": "QueryTags",
       "serviceName": "TagService",
-      "tag": "Tag",
+      "tag": "Tags",
       "permissions": [],
       "events": [],
       "labels": [],
@@ -1097,7 +1097,7 @@
       "name": "Query Tags (Additional Binding 1)",
       "methodName": "QueryTags",
       "serviceName": "TagService",
-      "tag": "Tag",
+      "tag": "Tags",
       "permissions": [],
       "events": [],
       "labels": [],
@@ -1315,7 +1315,7 @@
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-blog-platformized-proto/src/main/proto/tag.proto"
       },
       "topic": "domain_events_wix.blog.v3.tag",
-      "tag": "Tag",
+      "tag": "Tags",
       "permissions": [],
       "customLabels": [{"id": "maturity-alpha"}],
       "eventType": "wix.blog.v3.tag_deleted",
@@ -3333,6 +3333,127 @@
           "doc": " SEO general settings.\n"
         }
       ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "fieldsMapEntry",
+      "displayName": "fields Map Entry Object",
+      "locations": [],
+      "docs":       {
+        "summary": "Set of key-value pairs. Unordered map of dynamically typed values.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "key:value",
+        "type": "All APIs.Blog._wix_rich_content_v1_Value",
+        "doc": "`key` of type string, `value` of type object"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_rich_content_v1_Struct",
+      "displayName": "Struct Object",
+      "locations": [],
+      "docs":       {
+        "summary": " `Struct` represents a structured data value, consisting of fields\n which map to dynamically typed values. In some languages, `Struct`\n might be supported by a native representation. For example, in\n scripting languages like JS a struct is represented as an\n object. The details of that representation are described together\n with the proto support for the language.\n\n The JSON representation for `Struct` is JSON object.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "fields",
+        "type": "All APIs.Blog.fieldsMapEntry",
+        "doc": "Set of key-value pairs. Unordered map of dynamically typed values.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_rich_content_v1_Value",
+      "displayName": "Value Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "kind",
+        "type": "All APIs.Blog._wix_rich_content_v1_Value_kind",
+        "doc": " The kind of value.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_rich_content_v1_Value_kind",
+      "displayName": "kind Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "nullValue",
+          "type": "All APIs.Blog._wix_rich_content_v1_NullValue",
+          "doc": " Represents a null value.\n"
+        },
+                {
+          "name": "numberValue",
+          "type": "number",
+          "doc": " Represents a double value.\n"
+        },
+                {
+          "name": "stringValue",
+          "type": "string",
+          "doc": " Represents a string value.\n"
+        },
+                {
+          "name": "boolValue",
+          "type": "boolean",
+          "doc": " Represents a boolean value.\n"
+        },
+                {
+          "name": "structValue",
+          "type": "All APIs.Blog._wix_rich_content_v1_Struct",
+          "doc": " Represents a structured value.\n"
+        },
+                {
+          "name": "listValue",
+          "type": "All APIs.Blog._wix_rich_content_v1_ListValue",
+          "doc": " Represents a repeated `Value`.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_wix_rich_content_v1_ListValue",
+      "displayName": "List Value Object",
+      "locations": [],
+      "docs":       {
+        "summary": " `ListValue` is a wrapper around a repeated field of values.\n\n The JSON representation for `ListValue` is JSON array.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "values",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Blog._wix_rich_content_v1_Value"]
+        },
+        "doc": " Repeated field of dynamically typed values.\n"
+      }],
       "enum": null,
       "extra": {},
       "labels": []
@@ -5679,6 +5800,11 @@
           "name": "tableCellData",
           "type": "All APIs.Blog._wix_rich_content_v1_TableCellData",
           "doc": ""
+        },
+                {
+          "name": "externalData",
+          "type": "All APIs.Blog._wix_rich_content_v1_Struct",
+          "doc": ""
         }
       ],
       "enum": null,
@@ -6978,6 +7104,20 @@
       "labels": []
     },
         {
+      "name": "_wix_rich_content_v1_NullValue",
+      "displayName": "Null Value Object",
+      "locations": [],
+      "docs":       {
+        "summary": " `NullValue` is a singleton enumeration to represent the null value for the\n `Value` type union.\n\n  The JSON representation for `NullValue` is JSON `null`.\n \n Possible values are: <li><code> NULL_VALUE -  Null value.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": ["NULL_VALUE"],
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_wix_rich_content_v1_TextStyle_TextAlignment",
       "displayName": "Text Alignment Object",
       "locations": [],
@@ -7402,7 +7542,7 @@
       "displayName": "Type Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> PARAGRAPH <\/code><\/li><li><code> TEXT <\/code><\/li><li><code> HEADING <\/code><\/li><li><code> BULLETED_LIST <\/code><\/li><li><code> ORDERED_LIST <\/code><\/li><li><code> LIST_ITEM <\/code><\/li><li><code> BLOCKQUOTE <\/code><\/li><li><code> CODE_BLOCK <\/code><\/li><li><code> VIDEO <\/code><\/li><li><code> DIVIDER <\/code><\/li><li><code> FILE <\/code><\/li><li><code> GALLERY <\/code><\/li><li><code> GIF <\/code><\/li><li><code> HTML <\/code><\/li><li><code> IMAGE <\/code><\/li><li><code> LINK_PREVIEW <\/code><\/li><li><code> MAP <\/code><\/li><li><code> POLL <\/code><\/li><li><code> APP_EMBED <\/code><\/li><li><code> BUTTON <\/code><\/li><li><code> COLLAPSIBLE_LIST <\/code><\/li><li><code> TABLE <\/code><\/li><li><code> EMBED <\/code><\/li><li><code> COLLAPSIBLE_ITEM <\/code><\/li><li><code> COLLAPSIBLE_ITEM_TITLE <\/code><\/li><li><code> COLLAPSIBLE_ITEM_BODY <\/code><\/li><li><code> TABLE_CELL <\/code><\/li><li><code> TABLE_ROW <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> PARAGRAPH <\/code><\/li><li><code> TEXT <\/code><\/li><li><code> HEADING <\/code><\/li><li><code> BULLETED_LIST <\/code><\/li><li><code> ORDERED_LIST <\/code><\/li><li><code> LIST_ITEM <\/code><\/li><li><code> BLOCKQUOTE <\/code><\/li><li><code> CODE_BLOCK <\/code><\/li><li><code> VIDEO <\/code><\/li><li><code> DIVIDER <\/code><\/li><li><code> FILE <\/code><\/li><li><code> GALLERY <\/code><\/li><li><code> GIF <\/code><\/li><li><code> HTML <\/code><\/li><li><code> IMAGE <\/code><\/li><li><code> LINK_PREVIEW <\/code><\/li><li><code> MAP <\/code><\/li><li><code> POLL <\/code><\/li><li><code> APP_EMBED <\/code><\/li><li><code> BUTTON <\/code><\/li><li><code> COLLAPSIBLE_LIST <\/code><\/li><li><code> TABLE <\/code><\/li><li><code> EMBED <\/code><\/li><li><code> COLLAPSIBLE_ITEM <\/code><\/li><li><code> COLLAPSIBLE_ITEM_TITLE <\/code><\/li><li><code> COLLAPSIBLE_ITEM_BODY <\/code><\/li><li><code> TABLE_CELL <\/code><\/li><li><code> TABLE_ROW <\/code><\/li><li><code> EXTERNAL <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -7435,7 +7575,8 @@
         "COLLAPSIBLE_ITEM_TITLE",
         "COLLAPSIBLE_ITEM_BODY",
         "TABLE_CELL",
-        "TABLE_ROW"
+        "TABLE_ROW",
+        "EXTERNAL"
       ],
       "extra": {},
       "labels": []
@@ -7445,7 +7586,7 @@
       "displayName": "Type Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> BOLD <\/code><\/li><li><code> ITALIC <\/code><\/li><li><code> UNDERLINE <\/code><\/li><li><code> SPOILER <\/code><\/li><li><code> ANCHOR <\/code><\/li><li><code> MENTION <\/code><\/li><li><code> LINK <\/code><\/li><li><code> COLOR <\/code><\/li><li><code> FONT_SIZE <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> BOLD <\/code><\/li><li><code> ITALIC <\/code><\/li><li><code> UNDERLINE <\/code><\/li><li><code> SPOILER <\/code><\/li><li><code> ANCHOR <\/code><\/li><li><code> MENTION <\/code><\/li><li><code> LINK <\/code><\/li><li><code> COLOR <\/code><\/li><li><code> FONT_SIZE <\/code><\/li><li><code> EXTERNAL <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -7459,7 +7600,8 @@
         "MENTION",
         "LINK",
         "COLOR",
-        "FONT_SIZE"
+        "FONT_SIZE",
+        "EXTERNAL"
       ],
       "extra": {},
       "labels": []
@@ -7469,7 +7611,7 @@
       "displayName": "Origin Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> ADMIN -  Changed by admin\n <\/code><\/li><li><code> ADD_CATEGORIES -  Categories were changed\n <\/code><\/li><li><code> AUTO_SAVE -  Saved automatically\n <\/code><\/li><li><code> COPY_TEMPLATE -  Copied from template\n <\/code><\/li><li><code> IMPORT -  Imported\n <\/code><\/li><li><code> IMPORT_BULK -  Imported in bulk\n <\/code><\/li><li><code> IMPORT_HTML -  Imported with html import\n <\/code><\/li><li><code> IMPORT_PATCH -  Patch import\n <\/code><\/li><li><code> LANGUAGE_CHANGE -  Changed language\n <\/code><\/li><li><code> MANUAL_SAVE -  Saved manually\n <\/code><\/li><li><code> MIGRATION -  Affected by migration\n <\/code><\/li><li><code> MODERATION -  Affected by moderation\n <\/code><\/li><li><code> MOVE_TO_TRASH -  Moved to trash\n <\/code><\/li><li><code> PRICING_PLANS_CHANGE -  Pricing plans were changed\n <\/code><\/li><li><code> PROVISION -  Was provisioned\n <\/code><\/li><li><code> PUBLISH -  Was published\n <\/code><\/li><li><code> REASSIGN_OWNER -  Owner was reassigned\n <\/code><\/li><li><code> REBLOG -  Was reblogged\n <\/code><\/li><li><code> RESTORE -  Was restored\n <\/code><\/li><li><code> REVERT_TO_DRAFT -  Reverted to draft\n <\/code><\/li><li><code> TRANSLATION -  Was translated\n <\/code><\/li><li><code> UNPUBLISH -  Was unpublished\n <\/code><\/li><li><code> UNSCHEDULE -  Was unscheduled\n <\/code><\/li><li><code> NEW_EDIT_SESSION -  New edit session started which updated editing_session_id id\n <\/code><\/li><li><code> SCHEDULING_SERVICE_SCHEDULE -  Was scheduled by Later\n <\/code><\/li><li><code> SCHEDULING_SERVICE_UNSCHEDULE -  Was unscheduled by Later\n <\/code><\/li><li><code> SCHEDULING_SERVICE_PUBLISH -  Was published by Later\n <\/code><\/li><li><code> SCHEDULE -  Was scheduled\n <\/code><\/li><li><code> REMOVE_FROM_MODERATION -  Was removed from moderation\n <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> ADMIN -  Changed by admin\n <\/code><\/li><li><code> ADD_CATEGORIES -  Categories were changed\n <\/code><\/li><li><code> AUTO_SAVE -  Saved automatically\n <\/code><\/li><li><code> COPY_TEMPLATE -  Copied from template\n <\/code><\/li><li><code> IMPORT -  Imported\n <\/code><\/li><li><code> IMPORT_BULK -  Imported in bulk\n <\/code><\/li><li><code> IMPORT_HTML -  Imported with html import\n <\/code><\/li><li><code> IMPORT_PATCH -  Patch import\n <\/code><\/li><li><code> LANGUAGE_CHANGE -  Changed language\n <\/code><\/li><li><code> MANUAL_SAVE -  Saved manually\n <\/code><\/li><li><code> MIGRATION -  Affected by migration\n <\/code><\/li><li><code> MODERATION -  Affected by moderation\n <\/code><\/li><li><code> MOVE_TO_TRASH -  Moved to trash\n <\/code><\/li><li><code> PRICING_PLANS_CHANGE -  Pricing plans were changed\n <\/code><\/li><li><code> PROVISION -  Was provisioned\n <\/code><\/li><li><code> PUBLISH -  Was published\n <\/code><\/li><li><code> REASSIGN_OWNER -  Owner was reassigned\n <\/code><\/li><li><code> REBLOG -  Was reblogged\n <\/code><\/li><li><code> RESTORE -  Was restored\n <\/code><\/li><li><code> REVERT_TO_DRAFT -  Reverted to draft\n <\/code><\/li><li><code> TRANSLATION -  Was translated\n <\/code><\/li><li><code> UNPUBLISH -  Was unpublished\n <\/code><\/li><li><code> UNSCHEDULE -  Was unscheduled\n <\/code><\/li><li><code> NEW_EDIT_SESSION -  New edit session started which updated editing_session_id id\n <\/code><\/li><li><code> SCHEDULING_SERVICE_SCHEDULE -  Was scheduled by Later\n <\/code><\/li><li><code> SCHEDULING_SERVICE_UNSCHEDULE -  Was unscheduled by Later\n <\/code><\/li><li><code> SCHEDULING_SERVICE_PUBLISH -  Was published by Later\n <\/code><\/li><li><code> SCHEDULE -  Was scheduled\n <\/code><\/li><li><code> REMOVE_FROM_MODERATION -  Was removed from moderation\n <\/code><\/li><li><code> REJECT_FROM_MODERATION -  Was rejected from moderation\n <\/code><\/li><li><code> APPROVE_IN_MODERATION -  Was approved in moderation\n <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -7504,7 +7646,9 @@
         "SCHEDULING_SERVICE_UNSCHEDULE",
         "SCHEDULING_SERVICE_PUBLISH",
         "SCHEDULE",
-        "REMOVE_FROM_MODERATION"
+        "REMOVE_FROM_MODERATION",
+        "REJECT_FROM_MODERATION",
+        "APPROVE_IN_MODERATION"
       ],
       "extra": {},
       "labels": []
