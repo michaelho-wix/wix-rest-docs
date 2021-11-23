@@ -25,8 +25,8 @@ Site members receive permissions once a permission-granting badge is assigned to
 **Auto assign badges for the most active members.** A third party developer wants to create a loyalty program app that auto assigns badges to members, based on their activities.
 
    * Required information
-        * Member details [Site members API](https://dev.wix.com/api/rest/members/members/about-wix-members)
-        * Member group definition, based e.g. activities, orders list / bookings etc (based on [stores API](https://dev.wix.com/api/rest/wix-stores/about-wix-stores) / [bookings APIs](https://dev.wix.com/api/rest/wix-bookings/about-wix-bookings))
+        * Retrieve member IDs from Site Members API [Site members API](https://dev.wix.com/api/rest/members/members/about-wix-members)
+        * Select relevant members, based on e.g. activities, orders list / bookings etc (from on [stores API](https://dev.wix.com/api/rest/wix-stores/about-wix-stores) / [bookings APIs](https://dev.wix.com/api/rest/wix-bookings/about-wix-bookings))
 
   * Steps
     1. Define member group according to site owner's needs
