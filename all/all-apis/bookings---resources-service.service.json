@@ -339,7 +339,8 @@
           "name": "fieldMask",
           "type": "All APIs.Bookings - Resources Service._google_protobuf_FieldMask",
           "doc": " Field mask of fields to update.\n",
-          "required": false
+          "required": false,
+          "fieldMask": "RPC"
         }
       ],
       "ret":       {
@@ -399,7 +400,8 @@
           "name": "fieldmask",
           "type": "All APIs.Bookings - Resources Service._google_protobuf_FieldMask",
           "doc": "Fieldmask for schedule\n",
-          "required": false
+          "required": false,
+          "fieldMask": "RPC"
         },
                 {
           "in": "BODY",
@@ -1106,7 +1108,7 @@
                 {
           "name": "customAddress",
           "type": "All APIs.Bookings - Resources Service._com_wix_bookings_upstream_wix_common_Address",
-          "doc": "Custom address, used when locationType is `\"OWNER_CUSTOM\"`.\n"
+          "doc": "Custom address, used when locationType is `\"OWNER_CUSTOM\"`. Might be used when locationType is `\"CUSTOM\"` in case the owner sets a custom address for the session which is different from the default.\n"
         },
                 {
           "name": "businessLocation",
@@ -2220,7 +2222,8 @@
                 {
           "name": "fieldMask",
           "type": "All APIs.Bookings - Resources Service._google_protobuf_FieldMask",
-          "doc": "Field mask of fields to update.\n"
+          "doc": "Field mask of fields to update.\n",
+          "fieldMask": "RPC"
         },
                 {
           "name": "alignTimeExceptions",
@@ -2549,7 +2552,8 @@
                 {
           "name": "fieldMask",
           "type": "All APIs.Bookings - Resources Service._google_protobuf_FieldMask",
-          "doc": " Field mask of fields to update.\n"
+          "doc": " Field mask of fields to update.\n",
+          "fieldMask": "RPC"
         }
       ],
       "enum": null,
@@ -2697,7 +2701,8 @@
                 {
           "name": "fieldmask",
           "type": "All APIs.Bookings - Resources Service._google_protobuf_FieldMask",
-          "doc": "Fieldmask for schedule\n"
+          "doc": "Fieldmask for schedule\n",
+          "fieldMask": "RPC"
         },
                 {
           "name": "schedule",
