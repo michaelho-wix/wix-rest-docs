@@ -2114,7 +2114,7 @@
                 {
           "name": "billingCycles",
           "type": "integer",
-          "doc": " Number of billing cycles before subscription ends. Ignored if `autoRenewal: false`.\n"
+          "doc": " Number of billing cycles before subscription ends. Ignored if `autoRenewal: true`.\n"
         }
       ],
       "enum": null,
@@ -2166,11 +2166,6 @@
         "examples": []
       },
       "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": " Subscription option ID.\n"
-        },
                 {
           "name": "title",
           "type": "string",
@@ -3666,7 +3661,7 @@
       "displayName": "Channel Type Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> UNSPECIFIED <\/code><\/li><li><code> WEB <\/code><\/li><li><code> POS <\/code><\/li><li><code> EBAY <\/code><\/li><li><code> AMAZON <\/code><\/li><li><code> OTHER_PLATFORM <\/code><\/li><li><code> WIX_APP_STORE <\/code><\/li><li><code> WIX_INVOICES <\/code><\/li><li><code> BACKOFFICE_MERCHANT <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> UNSPECIFIED <\/code><\/li><li><code> WEB <\/code><\/li><li><code> POS <\/code><\/li><li><code> EBAY <\/code><\/li><li><code> AMAZON <\/code><\/li><li><code> OTHER_PLATFORM <\/code><\/li><li><code> WIX_APP_STORE <\/code><\/li><li><code> WIX_INVOICES <\/code><\/li><li><code> BACKOFFICE_MERCHANT <\/code><\/li><li><code> WISH <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -3680,7 +3675,8 @@
         "OTHER_PLATFORM",
         "WIX_APP_STORE",
         "WIX_INVOICES",
-        "BACKOFFICE_MERCHANT"
+        "BACKOFFICE_MERCHANT",
+        "WISH"
       ],
       "extra": {},
       "labels": []
@@ -3725,5 +3721,5 @@
       "labels": []
     }
   ],
-  "extra": {"artifactId": "com.wixpress.ecommerce.wix-ecommerce-orders-web"}
+  "extra": {"artifactId": "com.wixpress.ecom.orders-reverse-proxy"}
 }
